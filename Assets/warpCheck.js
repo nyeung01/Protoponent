@@ -1,14 +1,10 @@
-﻿var player : GameObject;
+﻿function Warp(other : Collider, warpPoint : GameObject){
+	GetComponent.<AudioSource>().Play();
+	other.transform.position = warpPoint.transform.position;
+	Input.ResetInputAxes();
+}
 
-function Check () {
-	var warpX = GetComponent(warpTo).warpPoint.transform.position.x;
-	var warpY = GetComponent(warpTo).warpPoint.transform.position.y;
-	var warpZ = GetComponent(warpTo).warpPoint.transform.position.z;
-	if(GetComponent(warpTo).steppedOn == true){
-		player.transform.position = Vector3(warpX+0.5,warpY,warpZ+0.5);
-		Debug.Log(player.transform.position);
-	}
-	else {
-		
-	}
+function WarpToDest(other, setDestination){
+	other.transform.position = Vector3.MoveTowards(other.transform.position, setDestination.transform.position, 10*Time.deltaTime);
+	other.transform.LookAt(setDestination.transform);
 }
