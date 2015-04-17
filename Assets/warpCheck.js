@@ -6,5 +6,5 @@
 
 function WarpToDest(other, setDestination){
 	other.transform.position = Vector3.MoveTowards(other.transform.position, setDestination.transform.position, 10*Time.deltaTime);
-	other.transform.LookAt(setDestination.transform);
+	other.transform.LookAt(setDestination.transform.position);
 }
